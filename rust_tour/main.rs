@@ -11,4 +11,10 @@ fn main(){
     let x;
     x =0;
     println!("{}", x);
+
+    let mut x = 42;
+    println!("{}",x);
+    x = 13;
+    println!("{}",x);
+
 }
