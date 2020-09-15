@@ -1,3 +1,6 @@
+const PI: f32=3.141596; // 大文字のSNAKE_CASE
+
+
 fn main(){
     // Tour 03
     // x の型を推論
@@ -36,5 +39,8 @@ fn main(){
     println!("{}", c);
 
     let t = true;
-    println!("{}", t as u8)
+    println!("{}", t as u8);
+
+    // Tour 07
+    println!("ゼロからアップル {} を作るには、まず宇宙を想像する必要があります", PI);
 }
