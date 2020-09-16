@@ -24,5 +24,16 @@ fn main() -> () {
     while x != 42 {
         x += 1;
     }
-    println!("{}", x)
+    println!("{}", x);
+
+    // Tour 17
+    // like Bash
+    for x in 0..5 {
+        println!("{}", x);
+    }
+
+    for x in 0..=5 {
+        println!("{}",x);
+    }
+
 }
