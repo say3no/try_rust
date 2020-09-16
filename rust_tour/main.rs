@@ -51,10 +51,23 @@ fn main(){
 
     // Tour 09
     println!("{}", add(42,13));
+
+    // Tour 10
+    let result = swap(123,321);
+    println!("{} {}", result.0, result.1 );
+
+    let (a, b) = swap(result.0, result.1 );
+    println!("{} {}", a, b );
+
 }
 
 // Tour 09
 // snake_case
 fn add(x: i32, y: i32) -> i32{
     return x + y;
+}
+
+// Tour 10 
+fn swap(x: i32, y: i32) -> (i32,i32){
+    return (y, x);
 }
