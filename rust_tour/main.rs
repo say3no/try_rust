@@ -43,4 +43,9 @@ fn main(){
 
     // Tour 07
     println!("ゼロからアップル {} を作るには、まず宇宙を想像する必要があります", PI);
+
+    // Tour 08
+    let nums: [i32; 3] = [1,2,3];
+    println!("{:?}", nums);
+    println!("{}", nums[1]);
 }
