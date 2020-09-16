@@ -59,6 +59,14 @@ fn main(){
     let (a, b) = swap(result.0, result.1 );
     println!("{} {}", a, b );
 
+    // Tour 11
+    let a = make_nothing();
+    let b = make_nothing2();
+
+    // 空を表示するのは難しいので、
+    // a と b のデバッグ文字列を表示
+    println!(" a の値 {:?}", a); // unit と呼ばれる空のタプルを返す
+    println!(" b の値 {:?}", b);
 }
 
 // Tour 09
@@ -67,7 +75,16 @@ fn add(x: i32, y: i32) -> i32{
     return x + y;
 }
 
-// Tour 10 
+// Tour 10
 fn swap(x: i32, y: i32) -> (i32,i32){
     return (y, x);
+}
+
+// Tour 11
+fn make_nothing()->() {
+    return ();
+}
+
+fn make_nothing2() ->(){
+    return ;
 }
