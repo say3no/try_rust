@@ -13,6 +13,9 @@ struct SeaCreature {
 // tuple likeな　sturctでは ; が必要
 struct Location(i32,i32);
 
+// Tour 28
+struct Marker; // Unit like
+
 fn main() -> () {
     // Tour 24
     // スタティックメソッドでStringインスタンスを作成する
@@ -72,4 +75,7 @@ fn main() -> () {
     // これもスタックに入れられる構造体
     let loc = Location(42,43);
     println!("{}, {}", loc.0, loc.1);
+
+    // Tour 28
+    let _m = Marker; // ()
 }
