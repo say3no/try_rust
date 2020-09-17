@@ -9,6 +9,10 @@ struct SeaCreature {
     weapon: String,
 }
 
+// Tour 27
+// tuple likeな　sturctでは ; が必要
+struct Location(i32,i32);
+
 fn main() -> () {
     // Tour 24
     // スタティックメソッドでStringインスタンスを作成する
@@ -63,4 +67,9 @@ fn main() -> () {
 
     println!("{} is a {}. They have {} arms, {} legs, and a {} weapon", ferris.name, ferris.animal_type, ferris.arms, ferris.legs, ferris.weapon);
     println!("{} is a {}. They have {} arms, {} legs, and a {} weapon", srah.name, srah.animal_type, srah.arms, srah.legs, srah.weapon);
+
+    // Tour 27
+    // これもスタックに入れられる構造体
+    let loc = Location(42,43);
+    println!("{}, {}", loc.0, loc.1);
 }
