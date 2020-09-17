@@ -1,7 +1,9 @@
+#![allow(dead_code)] // この行でコンパイラのwarning メッセージを止めます
+
 // Tour 23
-#[derive(Debug)]
 struct SeaCreature {
     // String は構造体である
+    species: Species,
     animal_type: String,
     name: String,
     arms: i32,
@@ -15,6 +17,15 @@ struct Location(i32,i32);
 
 // Tour 28
 struct Marker; // Unit like
+
+// Tour 29
+#[derive(Debug)] // kore nani
+enum Species {
+    Crab,
+    Octopus,
+    Fish,
+    Clam
+}
 
 fn main() -> () {
     // Tour 24
@@ -58,6 +69,7 @@ fn main() -> () {
         arms: 2,
         legs: 4,
         weapon: String::from("claw"),
+        species: Species::Clam
     };
 
     let srah = SeaCreature {
@@ -65,7 +77,8 @@ fn main() -> () {
         name: String::from("Sarah"),
         arms: 8,
         legs: 0,
-        weapon: String::from("none")
+        weapon: String::from("none"),
+        species: Species::Octopus
     };
 
     println!("{} is a {}. They have {} arms, {} legs, and a {} weapon", ferris.name, ferris.animal_type, ferris.arms, ferris.legs, ferris.weapon);
@@ -78,4 +91,12 @@ fn main() -> () {
 
     // Tour 28
     let _m = Marker; // ()
+
+    // Tour 29
+    match ferris.species {
+        Species::Crab => println!("{} is crab", ferris.name),
+        Species::Octopus => println!("{} is octopus", ferris.name),
+        Species::Fish => println!("{} is fish", ferris.name),
+        Species::Clam => println!("{} is clam", ferris.name),
+    }
 }
