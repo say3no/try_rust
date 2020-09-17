@@ -28,7 +28,7 @@ fn main() -> () {
     // メモリ上のいちはすでに知られていてかつ固定であるため、
     // 非常に早く使うことができる。
 
-    // 2. Static Memory
+    // 2. Stack Memory
     // 関数内で定義された変数。関数が呼び出されている間は、
     // メモリ上の位置は変更されることがないため、
     // コンパイラからするとチューニングできるので、
@@ -39,4 +39,28 @@ fn main() -> () {
     // このメモリにあるデータは追加、移動、削除、サイズの調節などの操作が許可されています。
     // 動的であるため、遅いと思われがちですが、これによりメモリの使い方に柔軟性を生み出すことができます。
     // データをヒープメモリに入れることをアロケーションといい、データをヒープメモリから削除することはディアロケーションといいます。
+
+
+    // Tour 26
+    // SeaCreatureのデータはスタックに入ります
+    let ferris = SeaCreature { //
+        // String 構造体もスタックに入りますが、
+        // ヒープに入るデータの参照アドレスが一つ入ります
+        animal_type: String::from("crab"), // "crab" はデータメモリ, String::from() はヒープ
+        name: String::from("Ferris"),
+        arms: 2,
+        legs: 4,
+        weapon: String::from("claw"),
+    };
+
+    let srah = SeaCreature {
+        animal_type: String::from("octopus"),
+        name: String::from("Sarah"),
+        arms: 8,
+        legs: 0,
+        weapon: String::from("none")
+    };
+
+    println!("{} is a {}. They have {} arms, {} legs, and a {} weapon", ferris.name, ferris.animal_type, ferris.arms, ferris.legs, ferris.weapon);
+    println!("{} is a {}. They have {} arms, {} legs, and a {} weapon", srah.name, srah.animal_type, srah.arms, srah.legs, srah.weapon);
 }
