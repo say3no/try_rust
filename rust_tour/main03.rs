@@ -4,11 +4,10 @@
 struct SeaCreature {
     // String は構造体である
     species: Species,
-    animal_type: String,
     name: String,
     arms: i32,
     legs: i32,
-    weapon: String,
+    weapon: Weapon,
 }
 
 // Tour 27
@@ -26,6 +25,20 @@ enum Species {
     Fish,
     Clam
 }
+
+// Tour 30
+enum PoisonType { Acidic, Painful, Lethal }
+
+enum Size { Big, Small }
+
+// Rust の enum は tagged-union とも言われています。
+// 複数の型を組み合わせて新しい型を作ることができます。これがRustにはalgebraic typesを持つと言われる理由です
+enum Weapon {
+    Claw(i32, Size), // tuple like struct
+    Poison(PoisonType),
+    None
+}
+
 
 fn main() -> () {
     // Tour 24
@@ -59,6 +72,7 @@ fn main() -> () {
     // データをヒープメモリに入れることをアロケーションといい、データをヒープメモリから削除することはディアロケーションといいます。
 
 
+    /*
     // Tour 26
     // SeaCreatureのデータはスタックに入ります
     let ferris = SeaCreature { //
@@ -98,5 +112,31 @@ fn main() -> () {
         Species::Octopus => println!("{} is octopus", ferris.name),
         Species::Fish => println!("{} is fish", ferris.name),
         Species::Clam => println!("{} is clam", ferris.name),
+    }
+    */
+
+    // Tour 30
+    let ferris = SeaCreature{
+        species: Species::Crab,
+        name: String::from("Ferris"),
+        arms: 2,
+        legs: 4,
+        weapon: Weapon::Claw(2, Size::Small)
+    };
+
+    match ferris.species {
+        Species::Crab => {
+            match ferris.weapon {
+                Weapon::Claw(num_claws, size) => {
+                    let size_description = match size {
+                        Size::Big => "big",
+                        Size::Small => "small",
+                    };
+                    println!("ferris is a crab with {} {} claws", num_claws, size_description)
+                },
+                _ => println!("ferris is acrab with some other wepons")
+            }
+        },
+        _ => println!("ferris is some other animal")
     }
 }
