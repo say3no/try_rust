@@ -12,12 +12,12 @@ fn main() -> () {
     // Tour 15
     let mut x = 0;
     loop {
-        x +=1;
-        if x ==42 {
+        x += 1;
+        if x == 42 {
             break;
         }
     }
-    println!("{}", x );
+    println!("{}", x);
 
     // Tour 16
     let mut x = 0;
@@ -33,7 +33,7 @@ fn main() -> () {
     }
 
     for x in 0..=5 {
-        println!("{}",x);
+        println!("{}", x);
     }
 
     // Tour 18
@@ -66,9 +66,8 @@ fn main() -> () {
     };
     println!("loop の戻り値: {}", v);
 
-    // Tour 20 
-    println!("関数より： {}",  example() );
-
+    // Tour 20
+    println!("関数より： {}", example());
 }
 
 // Tour 20

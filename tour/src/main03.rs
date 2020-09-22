@@ -12,7 +12,7 @@ struct SeaCreature {
 
 // Tour 27
 // tuple likeな　sturctでは ; が必要
-struct Location(i32,i32);
+struct Location(i32, i32);
 
 // Tour 28
 struct Marker; // Unit like
@@ -23,22 +23,28 @@ enum Species {
     Crab,
     Octopus,
     Fish,
-    Clam
+    Clam,
 }
 
 // Tour 30
-enum PoisonType { Acidic, Painful, Lethal }
+enum PoisonType {
+    Acidic,
+    Painful,
+    Lethal,
+}
 
-enum Size { Big, Small }
+enum Size {
+    Big,
+    Small,
+}
 
 // Rust の enum は tagged-union とも言われています。
 // 複数の型を組み合わせて新しい型を作ることができます。これがRustにはalgebraic typesを持つと言われる理由です
 enum Weapon {
     Claw(i32, Size), // tuple like struct
     Poison(PoisonType),
-    None
+    None,
 }
-
 
 fn main() -> () {
     // Tour 24
@@ -48,7 +54,6 @@ fn main() -> () {
     // インスタンスを使ってメソッドを呼び出す
     // InstanceMethodは　.  で呼べる
     println!("{} is {} characters long.", s, s.len());
-
 
     // Tour 25 Memory
     // Rustはデータを肘するために次の三種類のメモリ空間を持っています
@@ -70,7 +75,6 @@ fn main() -> () {
     // このメモリにあるデータは追加、移動、削除、サイズの調節などの操作が許可されています。
     // 動的であるため、遅いと思われがちですが、これによりメモリの使い方に柔軟性を生み出すことができます。
     // データをヒープメモリに入れることをアロケーションといい、データをヒープメモリから削除することはディアロケーションといいます。
-
 
     /*
     // Tour 26
@@ -116,27 +120,28 @@ fn main() -> () {
     */
 
     // Tour 30
-    let ferris = SeaCreature{
+    let ferris = SeaCreature {
         species: Species::Crab,
         name: String::from("Ferris"),
         arms: 2,
         legs: 4,
-        weapon: Weapon::Claw(2, Size::Small)
+        weapon: Weapon::Claw(2, Size::Small),
     };
 
     match ferris.species {
-        Species::Crab => {
-            match ferris.weapon {
-                Weapon::Claw(num_claws, size) => {
-                    let size_description = match size {
-                        Size::Big => "big",
-                        Size::Small => "small",
-                    };
-                    println!("ferris is a crab with {} {} claws", num_claws, size_description)
-                },
-                _ => println!("ferris is acrab with some other wepons")
+        Species::Crab => match ferris.weapon {
+            Weapon::Claw(num_claws, size) => {
+                let size_description = match size {
+                    Size::Big => "big",
+                    Size::Small => "small",
+                };
+                println!(
+                    "ferris is a crab with {} {} claws",
+                    num_claws, size_description
+                )
             }
+            _ => println!("ferris is acrab with some other wepons"),
         },
-        _ => println!("ferris is some other animal")
+        _ => println!("ferris is some other animal"),
     }
 }

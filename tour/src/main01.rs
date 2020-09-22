@@ -1,7 +1,6 @@
-const PI: f32=3.141596; // 大文字のSNAKE_CASE
+const PI: f32 = 3.141596; // 大文字のSNAKE_CASE
 
-
-fn main(){
+fn main() {
     // Tour 03
     // x の型を推論
     let x = 13;
@@ -13,14 +12,14 @@ fn main(){
 
     // 宣言のあとで初期化
     let x;
-    x =0;
+    x = 0;
     println!("{}", x);
 
     // Tour 04
     let mut x = 42;
-    println!("{}",x);
+    println!("{}", x);
     x = 13;
-    println!("{}",x);
+    println!("{}", x);
 
     // Tour 05
     let x = 12; // デフォルトでは i32
@@ -42,22 +41,25 @@ fn main(){
     println!("{}", t as u8);
 
     // Tour 07
-    println!("ゼロからアップル {} を作るには、まず宇宙を想像する必要があります", PI);
+    println!(
+        "ゼロからアップル {} を作るには、まず宇宙を想像する必要があります",
+        PI
+    );
 
     // Tour 08
-    let nums: [i32; 3] = [1,2,3];
+    let nums: [i32; 3] = [1, 2, 3];
     println!("{:?}", nums);
     println!("{}", nums[1]);
 
     // Tour 09
-    println!("{}", add(42,13));
+    println!("{}", add(42, 13));
 
     // Tour 10
-    let result = swap(123,321);
-    println!("{} {}", result.0, result.1 );
+    let result = swap(123, 321);
+    println!("{} {}", result.0, result.1);
 
-    let (a, b) = swap(result.0, result.1 );
-    println!("{} {}", a, b );
+    let (a, b) = swap(result.0, result.1);
+    println!("{} {}", a, b);
 
     // Tour 11
     let a = make_nothing();
@@ -71,20 +73,20 @@ fn main(){
 
 // Tour 09
 // snake_case
-fn add(x: i32, y: i32) -> i32{
+fn add(x: i32, y: i32) -> i32 {
     return x + y;
 }
 
 // Tour 10
-fn swap(x: i32, y: i32) -> (i32,i32){
+fn swap(x: i32, y: i32) -> (i32, i32) {
     return (y, x);
 }
 
 // Tour 11
-fn make_nothing()->() {
+fn make_nothing() -> () {
     return ();
 }
 
-fn make_nothing2() ->(){
-    return ;
+fn make_nothing2() -> () {
+    return;
 }
