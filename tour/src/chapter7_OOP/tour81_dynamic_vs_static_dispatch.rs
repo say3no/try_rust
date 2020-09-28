@@ -39,6 +39,13 @@ dynamic vs static dispatch
 * static dispatch - インスタンスの型がわかっている場合、どの関数を呼び出すかを直接知ることができます。
 * dynamic dispatch - インスタンスの型がわからない場合、正しい関数を呼び出す方法を見つけなければなりません
 
+Trait型である &dyn MyTrait は、dynamic dispatchを使用して間接的にオブジェクトのインスタンスを操作する機能を提供します。
+ダイナミックディスパッチを使用する場合、 Rust は trait 型の前に　dyn をつけることを推奨します。
+
+メモリの詳細:
+
+dynamic dispatchは、実際の関数呼び出しを見つけ得るためのポインタチェイスのため、若干遅くなります。
+
 */
 fn main() {
     let creature = SeaCreature {
