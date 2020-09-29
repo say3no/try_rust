@@ -31,7 +31,6 @@ fn dynamic_make_noise(noise_maker: &dyn NoiseMaker) {
 }
 
 /*
-
 dynamic vs static dispatch
 
 メソッドは２つの方法で実行されます。
