@@ -13,6 +13,12 @@ trait NoiseMaker {
     fn make_noise(&self);
 }
 
+impl NoiseMaker for SeaCreature {
+    fn make_noise(&self) {
+        println!("{}", &self.get_sound());
+    }
+}
+
 fn generic_make_noise<T>(creature: &T)
 where
     T: NoiseMaker,
