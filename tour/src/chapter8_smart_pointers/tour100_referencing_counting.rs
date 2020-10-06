@@ -9,7 +9,7 @@ impl Pie {
 }
 
 /**
- * Referencing Ccounting
+ * Referencing Counting
  *
  * RcはStackからHeap上にデータを移動させるスマートポインタです。
  * これにより、ヒープ上に置かれたデータを
