@@ -7,7 +7,7 @@ struct Pie {
 
 impl Pie {
     fn eat_slice(&mut self, name: &str) {
-        println!("{} took a slice!",, name);
+        println!("{} took a slice!", name);
         self.slices -= 1;
     }
 }
@@ -26,6 +26,20 @@ impl SeaCreature {
     }
 }
 
+/**
+ * Combining Smart Pointers
+ *
+ * スマートポインタは限定的に見えるかもしれませんが、非常に強力な組み合わせを作ることができます。
+ *
+ * Rc<Vec<Foo>> - ヒープ上の不変データ構造体の同じベクトルを借りることができる複数のスマートポインタの複製を許可します
+ * Rc<RefCell<Foo>> - 複数のスマートポインタが、同じ構造体Fooをmutable/immutableに借りることができるようにします
+ * Arc<Mutex<Foo>> - 複数のスマートポインタに、CPUスレッド排他的な方法で、一時的なmutable/immutableな借用をロックする機能を許可します
+ *
+ * メモリの詳細
+ *
+ * これらの組み合わせの多くにテーマがあることに気づくでしょう。
+ * 内部データを変更するための不変データ型(複数のスマートポインタが所有している可能性がある)
+ */
 fn main() {
     let pie = Rc::new(RefCell::new(Pie { slices: 8 }));
     // ferris and sarah are given clones of smart pointer to pie
@@ -34,7 +48,7 @@ fn main() {
         pie: pie.clone(),
     };
     let sarah = SeaCreature {
-        name: String::from("sarah")
+        name: String::from("sarah"),
         pie: pie.clone(),
     };
     ferris.eat();
