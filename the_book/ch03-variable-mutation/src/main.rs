@@ -85,6 +85,32 @@ fn main() {
 
     let x = expression_function();
     println!("x is {} ", x);
+
+    loop {
+        println!("again!");
+        break;
+    }
+
+    let mut number = 5;
+    while number != 0 {
+        println!("{}!", number);
+        number -= 1;
+    }
+
+    let mut index = 0;
+
+    while index < 3 {
+        println!("the value is : {}", arr[index]);
+        index = index + 1;
+    }
+
+    for ele in arr.iter() {
+        println!("{}", ele);
+    }
+
+    for a in (1..4).rev() {
+        println!("{}!", a);
+    }
 }
 
 fn another_functions(x: i32) {
