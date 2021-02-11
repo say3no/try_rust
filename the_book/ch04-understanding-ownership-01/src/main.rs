@@ -92,10 +92,30 @@ fn main() {
     // stackのみのデータはシャローコピーができちゃう
     let x = 5;
     let y = x;
-    println!("{}, {}", x, y) // Move できちゃう
+    println!("{}, {}", x, y); // Move できちゃう
 
     // 整数のようなスタックに収まるようなやつは、実際のコピーも高速だから(?)
-    // スタックに収まる変数はshallow と　deepを区別しない
+    // スタックに収まる変数は shallow と deep を区別しない
     // つまり、コピーはスタック変数にのみ実現される。ヒープに保持されるやつには、MoveとCloneがある。
     // スタックに保持される型に対して、Copy Trait が適合する。
+
+    // -------------------
+    // # 所有権と関数
+
+    let s = String::from("hello"); // sがスコープに入る
+    takes_ownership(s); // sの値が関数にムーブ. 返り値ないのでsは無効に
+
+    // println!("{}", s); // movedでエラー
+
+    let x = 5; // xがスコープに入る
+    makes_copy(x); // xも関数にムーブされるが, i32はCopyなので、
+    println!("{}", x); // movedでエラーにならない
+} // xはdrop, sはmoveした時点でdropなのでなんもない
+
+fn takes_ownership(some_string: String) {
+    println!("{}", some_string);
+}
+
+fn makes_copy(some_intger: i32) {
+    println!("{}", some_intger);
 }
