@@ -19,8 +19,15 @@ fn main() {
 
     // 関数の引数に参照を取ることを借用と呼びます。
     let mut s = String::from("oisu");
-    s = change(&mut s);
-    println!("{}", s)
+    change(&mut s);
+    println!("{}", s);
+
+    // 可変な参照は大きな制約が一つある。
+    // 特定のスコープで、ある特定のデータに対しては、一つしか可変な参照を持てない
+    let r1 = &mut s;
+    r1.push_str("aiueo kaikukeko dayo");
+    println!("{}", r1);
+    println!("{}", s);
 }
 
 fn change(some_string: &mut String) {
